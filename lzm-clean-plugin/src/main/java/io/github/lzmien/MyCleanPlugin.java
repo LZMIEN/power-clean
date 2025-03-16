@@ -18,8 +18,11 @@ import java.util.stream.Stream;
 
 /**
  * @author lizemin
- * @date 2025/3/15 9:09
- * @description
+ * @version 1.0
+ * @since jdk 1.8
+ * 插件名称： power-clean
+ * 插件创建日期： 2025/3/15 9:09
+ * 插件功能描述: 用于清理项目编译后的文件
  */
 @Mojo(name = "power-clean", defaultPhase = LifecyclePhase.CLEAN) // 为插件任务起名字，方便调用
 public class MyCleanPlugin extends AbstractMojo {

@@ -4,10 +4,16 @@
 
     <groupId>io.github.lzmien</groupId>
     <artifactId>lzm-clean-plugin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>maven-plugin</packaging>
 
     <name>power-clean-plugin Maven Plugin</name>
+
+    <!-- 项目描述 -->
+    <description>这是一个用于清理项目的Maven插件，它可以帮助用户自动执行一些清理任务。</description>
+
+    <!--项目url-->
+    <url>https://github.com/LZMIEN/power-clean</url>
 
     <licenses>
         <license>
@@ -19,7 +25,7 @@
     <developers>
         <developer>
             <name>lizemin</name>
-            <email>15871812940@163.com</email>
+            <email>lizemin816@gmail.com</email>
             <organization>lizemin</organization>
             <organizationUrl>https://blog.csdn.net/weixin_45642975/article/details/146274113</organizationUrl>
         </developer>
@@ -84,6 +90,47 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <!--发布插件的插件-->
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.7.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                        </configuration>
+                    </plugin>
+
+                    <!--生成Maven源码和文档-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                 </plugins>
             </build>
         </profile>
@@ -108,6 +155,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <!-- 配置编译插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -117,46 +165,6 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
-
-            <!--发布插件的插件-->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.7.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                </configuration>
-            </plugin>
-
-            <!--生成Maven源码和文档-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>
